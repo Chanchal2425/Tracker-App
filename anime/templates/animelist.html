@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% block title %}Edit Page{% endblock %}
+
+{% block content %}
+
+<h1 style="margin: 1rem;">Welcome here you can edit all you anime names</h1>
+
+{% for item in page_obj %}
+<div class="edit_section">
+
+    <!-- <p>{{item.is_completed}}</p> -->
+    <p>{{item.title}}</p>
+
+    <div class="buttons">
+
+        <div>
+            {% if item.is_completed %}
+            <a href="{% url 'pending_task' item.id %}">Mark as pending</a>
+            {% else %}
+            <a href="{% url 'complete_task' item.id %}">Mark as completed</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% block pages %}
+
+<div class="page_section mt-4">
+
+    <!-- LEFT: Page Info -->
+    <div class="text-light">
+        <span class="pagenums">
+            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+        </span>
+    </div>
+
+    <!-- RIGHT: Pagination -->
+    <nav>
+        <ul class="pagination mb-0">
+
+            <li class="page-item">
+                <a class="page-link" href="?page=1"><<</a>
+            </li>
+
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <a class="page-link">{{page_obj.number}}</a>
+            </li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.paginator.num_pages}}">>></a>
+            </li>
+
+        </ul>
+    </nav>
+
+</div>
+{% endblock pages %}

@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Home Page {% endblock %}
+
+
+{% block content %}
+
+<div>
+<div>
+    <img src="{% static '/images/anime_home_page.png' %}" alt="banner image" width="100%" height="320px">
+</div>
+<div class="home_section">
+    <div class="home_sh">
+    <h4 style="font-size: 1.4rem;">Quick and easy to access</h4>
+    <h5 class="font-size:1.1rem">stay organized and stay productive</h5>
+    <h6>Small steps towards achieve big goals</h6>
+    </div>
+    
+    <a href="/create/"><button class="gets_btn" >Get Started</button></a>
+    
+</div>
+</div>
+
+{% endblock %}

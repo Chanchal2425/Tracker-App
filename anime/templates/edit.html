@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+{% block title %}Edit Page{% endblock %}
+
+{% block content%}
+
+<h1 style="margin: 1rem;">Welcome here you can edit all you anime names</h1>
+{%for item in page_obj %}
+<div class="edit_section">
+    <!-- <p>{{dat.is_completed}}</p> -->
+<p>{{item.title}}</p>
+{% if item.owner == user %}
+
+<div class="buttons">
+<div>
+<form method="GET" action="/create">
+    <input type="hidden" name="edit" value="{{item.id}}">
+    <button type="submit" class="edit_btn">Edit</button>
+</form>
+</div>
+<div>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="delete_id" value="{{item.id}}">
+    <button type="submit" class="delete_btn">Delete</button>
+</form>
+</div>
+</div>
+{% else %}
+Access Restricted!!
+{% endif %}
+
+
+</div>
+{%endfor%}
+{% endblock %}
+
+{% block pages %}
+<nav class="mt-3">
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item">
+            <a class="page-link" href="?page=1"><<</a>
+        </li>
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active">
+            <a class="page-link">{{page_obj.number}}</a>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+        </li>
+        {% endif %}
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.paginator.num_pages}}">>></a>
+        </li>
+
+    </ul>
+</nav>
+
+{% endblock %}
