@@ -1,12 +1,12 @@
 # 🎬 My Tracker app
 
-A full-stack Django web application to manage your personal anime watch list.
+A full-stack Django web application to manage your personal watch list.
 
 Users can:
-- Add anime titles
-- Edit anime entries
-- Delete anime entries
-- Mark anime as Completed or Pending
+- Add titles
+- Edit entries
+- Delete entries
+- Mark as Completed or Pending
 - Manage their own personalized anime list securely
 
 ---
@@ -14,11 +14,11 @@ Users can:
 # 🚀 Features
 
 ✅ User Authentication  
-✅ Add New Anime Titles  
-✅ Edit Existing Anime Entries  
-✅ Delete Anime Entries  
-✅ Mark Anime as Completed  
-✅ Mark Anime as Pending  
+✅ Add New Titles  
+✅ Edit Existing  Entries  
+✅ Delete Entries  
+✅ Mark as Completed  
+✅ Mark as Pending  
 ✅ Pagination Support  
 ✅ Django Messages Framework  
 ✅ User-Specific Anime Lists  
